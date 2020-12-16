@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xe
 
 DIR="play-java-hello-world-tutorial"
 JAR_PATH="$DIR/target/scala-2.13/play-java-hello-world-tutorial-assembly-1.0-SNAPSHOT.jar"
