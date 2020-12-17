@@ -1,17 +1,15 @@
-#!/bin/bash -xe
+#!/bin/bash -e
 
-DIR="play-java-hello-world-tutorial/target/scala-2.13"
-JAR_PATH="$DIR/play-java-hello-world-tutorial-assembly-1.0-SNAPSHOT.jar"
-#SECRET=-"Dplay.http.secret.key=ad31779d4ee49d5ad5162bf1429c32e2e9933f3b"
-#PORT="-Dhttp.port=9000 -Dhttp.address=127.0.0.1"
-#SERVER_PATH="-Dplay.server.dir=$DIR"
-#PID_PATH="-Dpidfile.path=/var/run/play.pid"
+CWD=$(pwd)
+JAR_PATH="play-java-hello-world-tutorial/target/scala-2.13"
+JAR_FILE="play-java-hello-world-tutorial-assembly-1.0-SNAPSHOT.jar"
+JAR="$CWD/$JAR_PATH/$JAR_FILE"
 
-#JAR_PATH="play-java-hello-world-tutorial-assembly-1.0-SNAPSHOT.jar"
-
-if [ "$1" -ne "--no-assembly" ]
+if [ "$1" != "--no-assembly" ]
 then
+    echo 'Assembling...'
     (cd play-java-hello-world-tutorial && sbt assembly)
 fi
 
-java $SERVER_PATH -jar $JAR_PATH
+echo 'Running JAR...'
+java -jar $JAR
